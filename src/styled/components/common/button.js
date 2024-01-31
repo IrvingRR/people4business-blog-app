@@ -68,6 +68,16 @@ export const ButtonElement = styled.button`
                         color: var(--secondary-color);
                     }
                 `;
+
+            case 'plain':
+                return css`
+                    background-color: transparent;
+                    color: ${props => props.theme.fontColor};
+
+                    &:hover {
+                        background-color: ${props => props.theme.backgroundElementsColor};
+                    }
+                `;
             default:
                 break;
         }
