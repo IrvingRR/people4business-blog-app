@@ -12,16 +12,17 @@ export const GlobalStyles = createGlobalStyle`
         --secondary-color-disabled: #b6fcd8;
 
         --error-color: #f83b3b;
+        --white-color: #fff;
 
         --font-family: 'Inter', sans-serif;
         --fs-sm: 0.75rem; // 12px
-        --fs-md: 0.875; // 14px
+        --fs-md: 0.875rem; // 14px
         --fs-lg: 1.25rem; // 20px
         --fs-xl: 1.875rem; // 30px
         --fs-xxl: 2.1875rem; // 35px
-        --fs-xxxl: 2.5rem: // 40px
+        --fs-xxxl: 2.5rem; // 40px
 
-        --raidus: 10px;
+        --radius: 5px;
         --radius-rounded: 80px;
         --transition: 0.2s ease;
     }
@@ -43,6 +44,7 @@ export const GlobalStyles = createGlobalStyle`
         border: 1px solid transparent;
         transition: var(--transition);
         font-family: var(--font-family);
+        font-size: var(--fs-md);
     }
 
     button {
