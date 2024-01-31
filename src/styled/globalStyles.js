@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
         --secondary-color-hover: #3fe993;
         --secondary-color-disabled: #b6fcd8;
 
-        --error-color: #f83b3b
+        --error-color: #f83b3b;
 
         --font-family: 'Inter', sans-serif;
         --fs-sm: 0.75rem; // 12px
@@ -30,6 +30,9 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-family: var(--font-family);
         font-size: var(--fs-md);
+        min-height: 100vh;
+        background-color: ${props => props.theme.backgroundColor};
+        color: ${props => props.theme.fontColor};
     }
 
     input,
