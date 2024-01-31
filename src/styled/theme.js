@@ -2,9 +2,9 @@ export const lightTeheme = {
     backgroundColor: '#ffffff',
     backgroundElementsColor: '#f3f3f3',
     fontColor: '#1c2727',
-    fontSecondaryColor: '#e9e9e9',
-    borderColor: '#e9e9e9',
-    placeholderColor: '#e9e9e9',
+    fontSecondaryColor: '#cccc',
+    borderColor: '#cccc',
+    placeholderColor: '#cccc',
 };
 
 export const darkTheme = {
