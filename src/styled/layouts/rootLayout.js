@@ -5,7 +5,6 @@ export const RootContainer = styled.main`
     max-width: 992px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     margin: auto;
 `;
 
