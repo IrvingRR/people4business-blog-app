@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
         --fs-sm: 10px; // 12px
         --fs-md: 12px; // 14px
         --fs-lg: 18px; // 20px
-        --fs-xl: 30px; // 30px
+        --fs-xl: 25px; // 30px
         --fs-xxl: 35px; // 35px
         --fs-xxxl: 40px; // 40px
 
