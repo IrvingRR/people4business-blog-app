@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { BiArrowBack } from "react-icons/bi";
@@ -16,6 +16,7 @@ export const EntryDetailsPage = () => {
 
     const { entry, isLoading, setEntry, setLoading, removeEntry } = useContext(EntriesContext);
     const { isOffline } = useContext(InternetConnectionContext);
+    const [isLoadingDelete, setIsLoadingDelete] = useState(false);
 
     const editModal = useModal();
     const confirmModal = useModal();
@@ -52,6 +53,7 @@ export const EntryDetailsPage = () => {
 
     const deleteEntry = async () => {
         try {
+            setIsLoadingDelete(true);
             await deleteEntryService(id);
             toast.success('Entry deleted successfully!');
             removeEntry(id);
@@ -62,6 +64,8 @@ export const EntryDetailsPage = () => {
             } else {
                 toast.error(error.message);
             }
+        } finally {
+            setIsLoadingDelete(false);
         }
     };
 
@@ -71,7 +75,7 @@ export const EntryDetailsPage = () => {
     {!isLoading && (
         <>
             <EditEntryModal isOpen={editModal.isOpen} closeModal={editModal.closeModal}/>
-            <ConfirmModal isOpen={confirmModal.isOpen} closeModal={confirmModal.closeModal} confirmFunction={deleteEntry}/>
+            <ConfirmModal isOpen={confirmModal.isOpen} closeModal={confirmModal.closeModal} confirmFunction={deleteEntry} isLoading={isLoadingDelete}/>
             <EntryContainer>
                 <HeaderActions>
                     <Actions>
