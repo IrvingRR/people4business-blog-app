@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
-    z-index: 9999;
+    z-index: 999;
 
     ${props => props.active && css`
         transform: translateY(0);

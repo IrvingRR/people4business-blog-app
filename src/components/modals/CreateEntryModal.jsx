@@ -1,13 +1,45 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Actions, Form } from "../../styled/components/common/form";
 import { Input, Textarea, Button } from "../common";
 import { Modal } from "./Modal";
+import { createEntryService } from "../../services/entries";
+import { EntriesContext } from "../../contexts/EntriesContext";
 
 export const CreateEntryModal = ({ isOpen, closeModal }) => {
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { addEntry } = useContext(EntriesContext);
+  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (data) => console.log(data);
-  console.log('Errors:', errors);
+  const onSubmit = async(data) => {
+    try {
+      
+      setIsLoading(true)
+      const response = await createEntryService(data);
+
+      if(response.status === 'success') {
+
+        addEntry(response.data);
+        toast.success('Entry created successfully!');
+        
+        const entriesStorage = JSON.parse(localStorage.getItem('entries'));
+        localStorage.setItem('entries', JSON.stringify([...entriesStorage, response.data]));
+
+        reset();
+        closeModal();
+
+      } else {
+        toast.error(response.error);
+      }
+
+    } catch (error) {
+      console.log('Error creating entry:', error);
+
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Modal isOpenModal={isOpen} closeModal={closeModal}>
@@ -38,10 +70,10 @@ export const CreateEntryModal = ({ isOpen, closeModal }) => {
               register={{
                 ...register('content', {required: 'Content is required'})
               }}/>
-              
+
             <Actions>
                 <Button label='Cancel' variant='outlined' type='button' onClick={closeModal}/>
-                <Button label='Create'/>
+                <Button label='Create' isLoading={isLoading} disabled={isLoading}/>
             </Actions>
         </Form>
     </Modal>

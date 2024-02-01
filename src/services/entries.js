@@ -10,6 +10,22 @@ export const getEntriesService = async () => {
         }
         
     } catch (error) {
-        console.log('Error:', error);
+        console.log('Error Service:', error);
+    }
+};
+
+export const createEntryService = async (data) => {
+    try {
+        const request = await fetch(`${API_URL}/entries`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        
+        const response = await request.json();
+        return response;
+        
+    } catch (error) {
+        console.log('Error Service:', error);
     }
 };

@@ -15,6 +15,8 @@ export const Actions = styled.div`
 
 export const EntriesList = styled.ul`
     width: 100%;
+    max-height: 65vh;
+    overflow: auto;
     display: flex;
     align-items: center;
     flex-direction: column;

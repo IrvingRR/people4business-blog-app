@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import { spinnerAnimation } from '../../animations';
 
 export const ButtonElement = styled.button`
     padding: 8px 10px;
@@ -9,6 +10,7 @@ export const ButtonElement = styled.button`
     gap: 5px;
     background-color: var(--primary-color);
     color: var(--white-color);
+    position: relative;
 
     &:hover { 
         background-color: var(--primary-color-hover);
@@ -82,4 +84,23 @@ export const ButtonElement = styled.button`
                 break;
         }
     }}
+`;
+
+export const WrapperSnniper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    position: absolute;
+`;
+
+export const Spinner = styled.span`
+    width: 13px;
+    height: 13px;
+    border: 1px solid ${props => props.theme.borderColor};
+    border-radius: 100%;
+    border-right-color: var(--primary-color);
+    animation: 0.7s ${spinnerAnimation} linear infinite;
 `;

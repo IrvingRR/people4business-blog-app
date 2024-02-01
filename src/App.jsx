@@ -4,6 +4,7 @@ import { darkTheme, lightTeheme } from "./styled/theme";
 import { Router } from "./router";
 import { useContext } from "react";
 import { ThemeModeContext } from "./contexts/ThemeModeContext";
+import { Toast } from "./components/composite";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTeheme}>
         <GlobalStyles/>
+        <Toast/>
         <Router/>
       </ThemeProvider>
     </>

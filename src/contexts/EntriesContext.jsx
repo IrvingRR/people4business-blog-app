@@ -19,11 +19,19 @@ export const EntriesProvider = ({children}) => {
             type: ACTIONS.SET_LOADING,
             payload: value
         });
-    }
+    };
+
+    const addEntry = (entry) => {
+        dispatch({
+            type: ACTIONS.ADD_ENTRY,
+            payload: entry
+        });
+    };
 
     const entriesState = {
         ...state,
         readEntries,
+        addEntry,
         setLoading
     };
 

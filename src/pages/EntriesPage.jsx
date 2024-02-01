@@ -18,11 +18,12 @@ export const EntriesPage = () => {
         const entries = await getEntriesService();
   
         if(entries.status) {
-          readEntries(entries.data)
+          readEntries(entries.data);
+          localStorage.setItem('entries', JSON.stringify(entries.data));
         };
 
       } catch (error) {
-        console.log('Error Entries:', error);
+        console.log('Error getting entries:', error);
       
       } finally {
         setLoading(false);

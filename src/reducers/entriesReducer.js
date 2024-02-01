@@ -15,6 +15,13 @@ export const entriesReducer = (state, action) => {
         case ACTIONS.SET_LOADING: {
             return { ...state, isLoading: action.payload }
         };
+
+        case ACTIONS.ADD_ENTRY: {
+            return {
+                ...state,
+                entries: [...state.entries, action.payload]
+            };
+        };
     
         default:
             return state;
