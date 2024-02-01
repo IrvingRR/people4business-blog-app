@@ -24,6 +24,8 @@ export const EntriesPage = () => {
   ];
 
   useEffect(() => {
+    if (isOffline) return getEntriesStorage();
+
     const getEntries = async () => {
       try {
         setLoading(true);
@@ -65,6 +67,11 @@ export const EntriesPage = () => {
 
     }
   };
+
+  const getEntriesStorage = () => {
+    const entriesStorage = JSON.parse(localStorage.getItem('entries'));
+    readEntries(entriesStorage);
+  }
 
   useEffect(() => {
     if (!filter.value || !search) return setResults(entries);

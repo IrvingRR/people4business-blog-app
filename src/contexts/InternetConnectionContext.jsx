@@ -26,7 +26,7 @@ export const InternetConnectionProvider = ({children}) => {
             setIsOffline(true);
             setIsOnline(false);
         }
-    }, 5000);
+    }, 3000);
 
     return (
         <InternetConnectionContext.Provider value={{ isOnline, isOffline }}>

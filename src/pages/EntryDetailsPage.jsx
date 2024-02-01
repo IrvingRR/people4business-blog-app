@@ -23,6 +23,8 @@ export const EntryDetailsPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (isOffline) return getEntryFromStorage(id);
+
         const getEntry = async () => {
             try {
                 setLoading(true);
@@ -38,6 +40,15 @@ export const EntryDetailsPage = () => {
 
         getEntry();
     }, []);
+
+    const getEntryFromStorage = () => {
+        const entriesStorage = JSON.parse(localStorage.getItem('entries'));
+        const entry = entriesStorage.find(entry => entry.id === parseInt(id));
+        
+        if(entry.id) {
+            return setEntry(entry);
+        }
+    }
 
     const deleteEntry = async () => {
         try {
