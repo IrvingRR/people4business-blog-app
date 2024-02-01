@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
 
-export const InputGroup = styled.div`
+export const TextareaGroup = styled.div`
     width: 100%;
     max-width: ${props => props.max_width};
     display: flex;
@@ -8,24 +8,14 @@ export const InputGroup = styled.div`
     gap: 5px;
 `;
 
-export const InputContent = styled.div`
+export const TextareaContent = styled.div`
     width: 100%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    svg {
-        position: absolute;
-        left: 15px;
-        font-size: var(--fs-md);
-        color: ${props => props.theme.placeholderColor};
-    }
+    height: 200px;
 `;
 
-export const InputElement = styled.input`
+export const TextareaElement = styled.textarea`
     width: 100%;
-    height: 100%;
+    height: 200px;
     padding: 10px 20px;
     border-radius: var(--radius);
     border-color: ${props => props.theme.borderColor};
@@ -38,21 +28,11 @@ export const InputElement = styled.input`
 
     &:focus {
         border-color: var(--primary-color);
-
-        & ~ svg { color: var(--primary-color); }
     }
-
-    ${props => props.icon && css`
-        padding: 10px 20px 10px 35px;
-    `}
 
     ${props => props.error && css`
         border-color: var(--error-color) !important;
         color: var(--error-color) !important;
-        
-        & ~ svg {
-            color: var(--error-color) !important;
-        }
     `}
 
     ${props => props.rounded && css`border-radius: var(--radius-rounded);`}

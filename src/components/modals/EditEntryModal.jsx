@@ -1,6 +1,5 @@
-import { Actions, Form, Textarea } from "../../styled/components/common/form";
-import { Button } from "../common/Button";
-import { Input } from "../common/Input";
+import { Actions, Form } from "../../styled/components/common/form";
+import { Button, Input, Textarea } from "../common";
 import { Modal } from "./Modal";
 
 export const EditEntryModal = ({ isOpen, closeModal }) => {
