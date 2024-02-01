@@ -60,4 +60,24 @@ export const GlobalStyles = createGlobalStyle`
         list-style: none;
     }
 
+    /* Scroll Bar */
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-color: ${props => props.theme.backgroundElementsColor};
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background-color: ${props => props.theme.placeholderColor};
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--primary-color);
+    }
+
 `;
