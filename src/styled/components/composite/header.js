@@ -11,7 +11,7 @@ export const HeaderElement = styled.header`
 `;
 
 export const Logo = styled(Link)`
-    font-size: var(--fs-md);
+    font-size: var(--fs-lg);
     display: flex;
     align-items: center;
     gap: 5px;

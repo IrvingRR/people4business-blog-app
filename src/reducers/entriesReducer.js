@@ -19,9 +19,11 @@ export const entriesReducer = (state, action) => {
         };
 
         case ACTIONS.ADD_ENTRY: {
+            console.log('ADD ENTRY:', action.payload);
             return {
                 ...state,
-                entries: [...state.entries, action.payload]
+                entries: [...state.entries, action.payload],
+                results: [...state.results, action.payload],
             };
         };
 
@@ -43,7 +45,8 @@ export const entriesReducer = (state, action) => {
 
             return {
                 ...state,
-                entries: entriesUpdated
+                entries: entriesUpdated,
+                results: entriesUpdated
             };
         };
 
@@ -51,7 +54,8 @@ export const entriesReducer = (state, action) => {
             const entriesAfterRemoved = state.entries.filter(entry => entry.id !== action.payload);
             return {
                 ...state,
-                entries: entriesAfterRemoved
+                entries: entriesAfterRemoved,
+                results: entriesAfterRemoved
             };
         };
 

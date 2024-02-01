@@ -7,6 +7,7 @@ import { Modal } from "./Modal";
 import { createEntryService } from "../../services/entries";
 import { EntriesContext } from "../../contexts/EntriesContext";
 import { InternetConnectionContext } from "../../contexts/InternetConnectionContext";
+import { handleErrorsHelper } from "../../helpers/handleErrors";
 
 export const CreateEntryModal = ({ isOpen, closeModal }) => {
   const { addEntry } = useContext(EntriesContext);
@@ -36,14 +37,15 @@ export const CreateEntryModal = ({ isOpen, closeModal }) => {
       }
 
     } catch (error) {
-      if(error.errors.length > 0) {
-        error.errors.forEach(error => toast.error(error))
-      } else {
-        toast.error(error.message);
-      }
+     handleErrorsHelper(error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleCancel = () => {
+    closeModal();
+    reset();
   };
 
   return (
@@ -77,7 +79,7 @@ export const CreateEntryModal = ({ isOpen, closeModal }) => {
               }}/>
 
             <Actions>
-                <Button label='Cancel' variant='outlined' type='button' onClick={closeModal}/>
+                <Button label='Cancel' variant='outlined' type='button' onClick={handleCancel}/>
                 <Button label='Create' isLoading={isLoading} disabled={isLoading || isOffline}/>
             </Actions>
         </Form>

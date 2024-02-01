@@ -9,6 +9,7 @@ import { Actions, FormActions, FormSearch, HeaderActions } from "../styled/pages
 import { getEntriesService, searchEntriesService } from "../services/entries";
 import { EntriesContext } from "../contexts/EntriesContext";
 import { InternetConnectionContext } from "../contexts/InternetConnectionContext";
+import { handleErrorsHelper } from "../helpers/handleErrors";
 
 export const EntriesPage = () => {
   const { entries, isLoading, readEntries, setLoading, setResults } = useContext(EntriesContext);
@@ -37,12 +38,7 @@ export const EntriesPage = () => {
         localStorage.setItem('entries', JSON.stringify(entries.data));
 
       } catch (error) {
-        if(error.errors.length > 0) {
-          error.errors.forEach(error => toast.error(error))
-        } else {
-          toast.error(error.message);
-        }
-      
+        handleErrorsHelper(error);
       } finally {
         setLoading(false);
       }

@@ -8,6 +8,7 @@ import { Modal } from "./Modal";
 import { EntriesContext } from '../../contexts/EntriesContext';
 import { editEntryService } from "../../services/entries";
 import { InternetConnectionContext } from "../../contexts/InternetConnectionContext";
+import { handleErrorsHelper } from "../../helpers/handleErrors";
 
 export const EditEntryModal = ({ isOpen, closeModal }) => {
   const { entry, setEntry, updateEntry } = useContext(EntriesContext);
@@ -40,11 +41,7 @@ export const EditEntryModal = ({ isOpen, closeModal }) => {
       closeModal();
 
     } catch (error) {
-      if(error.errors && error.errors.length > 0) {
-        error.errors.forEach(error => toast.error(error))
-      } else {
-          toast.error(error.message);
-      }
+      handleErrorsHelper(error);
     } finally {
       setIsLoading(false);
     }
