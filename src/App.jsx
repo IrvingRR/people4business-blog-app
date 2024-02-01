@@ -10,13 +10,13 @@ import { InternetConnectionContext } from "./contexts/InternetConnectionContext"
 function App() {
 
   const { isDarkMode } = useContext(ThemeModeContext);
-  const { isOnline } = useContext(InternetConnectionContext);
+  const { isOffline } = useContext(InternetConnectionContext);
 
   return (
     <>
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTeheme}>
         <GlobalStyles/>
-        {!isOnline && <ConnectionAlert/>}
+        {isOffline && <ConnectionAlert/>}
         <Toast/>
         <Router/>
       </ThemeProvider>

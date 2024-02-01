@@ -3,9 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
     /* Variables */
     :root {
-        --primary-color: #fb98bb;
-        --primary-color-hover: #f14378;
-        --primary-color-disabled: #fccedf;
+        --primary-color: #f86e9c;
+        --primary-color-hover: #a11331;
+        --primary-color-disabled: #fde6ef;
 
         --secondary-color: #7ef7ba;
         --secondary-color-hover: #3fe993;

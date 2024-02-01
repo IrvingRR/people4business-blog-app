@@ -6,9 +6,11 @@ import { Input, Textarea, Button } from "../common";
 import { Modal } from "./Modal";
 import { createEntryService } from "../../services/entries";
 import { EntriesContext } from "../../contexts/EntriesContext";
+import { InternetConnectionContext } from "../../contexts/InternetConnectionContext";
 
 export const CreateEntryModal = ({ isOpen, closeModal }) => {
   const { addEntry } = useContext(EntriesContext);
+  const { isOffline } = useContext(InternetConnectionContext);
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,7 +78,7 @@ export const CreateEntryModal = ({ isOpen, closeModal }) => {
 
             <Actions>
                 <Button label='Cancel' variant='outlined' type='button' onClick={closeModal}/>
-                <Button label='Create' isLoading={isLoading} disabled={isLoading}/>
+                <Button label='Create' isLoading={isLoading} disabled={isLoading || isOffline}/>
             </Actions>
         </Form>
     </Modal>

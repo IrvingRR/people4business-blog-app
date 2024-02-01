@@ -42,6 +42,11 @@ export const InputElement = styled.input`
         & ~ svg { color: var(--primary-color); }
     }
 
+    &:disabled {
+        color: ${props => props.theme.backgroundElementsColor};
+        border-color: ${props => props.theme.backgroundElementsColor};
+    }
+
     ${props => props.icon && css`
         padding: 10px 20px 10px 35px;
     `}
@@ -56,6 +61,7 @@ export const InputElement = styled.input`
     `}
 
     ${props => props.rounded && css`border-radius: var(--radius-rounded);`}
+
 `;
 
 export const Legend = styled.div`

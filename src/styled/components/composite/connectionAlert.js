@@ -8,6 +8,7 @@ export const ConnectionAlertWrapper = styled.div`
     justify-content: center;
     gap: 10px;
     background-color: var(--primary-color);
+    position: absolute;
 
     svg { 
         font-size: var(--fs-xl);

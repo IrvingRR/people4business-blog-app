@@ -6,6 +6,7 @@ export const InternetConnectionContext = createContext();
 export const InternetConnectionProvider = ({children}) => {
 
     const [isOnline, setIsOnline] = useState(true);
+    const [isOffline, setIsOffline] = useState(false);
 
     const chekConnection = async () => {
         try {
@@ -18,11 +19,17 @@ export const InternetConnectionProvider = ({children}) => {
 
     setInterval(async () => {
         const connectionStatus = await chekConnection();
-        setIsOnline(connectionStatus);
+        if (connectionStatus) {
+            setIsOnline(connectionStatus);
+            setIsOffline(false);
+        } else {
+            setIsOffline(true);
+            setIsOnline(false);
+        }
     }, 5000);
 
     return (
-        <InternetConnectionContext.Provider value={{ isOnline }}>
+        <InternetConnectionContext.Provider value={{ isOnline, isOffline }}>
             {children}
         </InternetConnectionContext.Provider>
     );

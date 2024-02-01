@@ -16,12 +16,18 @@ export const ButtonElement = styled.button`
         background-color: var(--primary-color-hover);
     }
 
+    &:disabled {
+        background-color: var(--primary-color-disabled);
+        cursor: not-allowed;
+    }
+
     ${props => {
         switch (props.variant) {
             case 'secondary':
                 return css`
                     background-color: var(--secondary-color);
                     &:hover { background-color: var(--secondary-color-hover); }
+                    &:disabled { background-color: var(--secondary-color-disabled); }
                 `
 
             case 'outlined':
@@ -34,6 +40,12 @@ export const ButtonElement = styled.button`
                         background-color: transparent;
                         border-color: var(--primary-color-hover);
                         color: var(--primary-color-hover);
+                    }
+
+                    &:disabled {
+                        background-color: transparent;
+                        border-color: var(--primary-color-disabled);
+                        color: var(--primary-color-disabled);
                     }
                 `
 
@@ -48,6 +60,12 @@ export const ButtonElement = styled.button`
                         border-color: var(--secondary-color-hover);
                         color: var(--secondary-color-hover);
                     }
+
+                    &:disabled {
+                        background-color: transparent;
+                        border-color: var(--secondary-color-disabled);
+                        color: var(--secondary-color-disabled);
+                    }
                 `
             case 'text':
                 return css`
@@ -57,6 +75,11 @@ export const ButtonElement = styled.button`
                     &:hover {
                         background-color: transparent;
                         color: var(--primary-color);
+                    }
+
+                    &:disabled {
+                        background-color: transparent;
+                        color: var(--primary-disabled);
                     }
                 `;
 
@@ -69,6 +92,11 @@ export const ButtonElement = styled.button`
                         background-color: transparent;
                         color: var(--secondary-color);
                     }
+
+                    &:disabled {
+                        background-color: transparent;
+                        color: var(--secondary-color-disabled);
+                    }
                 `;
 
             case 'plain':
@@ -77,6 +105,10 @@ export const ButtonElement = styled.button`
                     color: ${props => props.theme.fontColor};
 
                     &:hover {
+                        background-color: ${props => props.theme.backgroundElementsColor};
+                    }
+
+                    &:disabled {
                         background-color: ${props => props.theme.backgroundElementsColor};
                     }
                 `;
