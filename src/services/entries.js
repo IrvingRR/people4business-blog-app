@@ -52,3 +52,25 @@ export const getEntryService = async (id) => {
         console.log('Error Service:', error);
     }
 };
+
+export const editEntryService = async (id, data) => {
+    try {
+        const request = await fetch(`${API_URL}/entries/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+
+        const response = await request.json();
+        
+        if(request.ok && request.status === 200) {
+            return Promise.resolve(response);
+        } else {
+            return Promise.reject(response);
+        }
+        console.log('Request:', request);
+        
+    } catch (error) {
+        console.log('Error Service:', error);
+    }
+};

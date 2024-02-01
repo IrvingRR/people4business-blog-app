@@ -21,6 +21,7 @@ export const TextareaElement = styled.textarea`
     border-color: ${props => props.theme.borderColor};
     background-color: transparent;
     color: ${props => props.theme.fontColor};
+    line-height: 23px;
 
     &::placeholder {
         color: ${props => props.theme.placeholderColor};
