@@ -40,14 +40,21 @@ export const EntriesProvider = ({children}) => {
             type: ACTIONS.UPDATE_ENTRY,
             payload: entry
         });
-    }
+    };
 
     const removeEntry = (id) => {
         dispatch({
             type: ACTIONS.REMOVE_ENTRY,
             payload: id
         });
-    }
+    };
+
+    const setResults = (results) => {
+        dispatch({
+            type: ACTIONS.SET_RESULTS,
+            payload: results
+        });
+    };
 
     const entriesState = {
         ...state,
@@ -56,6 +63,7 @@ export const EntriesProvider = ({children}) => {
         setEntry,
         updateEntry,
         removeEntry,
+        setResults,
         setLoading
     };
 

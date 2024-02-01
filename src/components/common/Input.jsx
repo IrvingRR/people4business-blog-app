@@ -4,7 +4,7 @@ export const Input = ({ icon, maxWidth, error, legend, rounded, register, ...pro
   return (
     <InputGroup max_width={maxWidth}>
         <InputContent>
-            <InputElement { ...register } rounded={rounded} error={error} icon={icon} { ...props }/>
+            <InputElement { ...register } rounded={rounded} error={error} icon={icon} { ...props } autoComplete="off"/>
             {icon}
         </InputContent>
         {(error && legend) && <Legend>{legend}</Legend> }

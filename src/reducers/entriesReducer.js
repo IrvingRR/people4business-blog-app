@@ -3,6 +3,7 @@ import { ACTIONS } from "../actions/entries";
 export const entriesInitialState = {
     entries: [],
     entry: {},
+    results: [],
     isLoading: false
 };
 
@@ -51,6 +52,13 @@ export const entriesReducer = (state, action) => {
             return {
                 ...state,
                 entries: entriesAfterRemoved
+            };
+        };
+
+        case ACTIONS.SET_RESULTS: {
+            return {
+                ...state,
+                results: action.payload
             };
         };
     

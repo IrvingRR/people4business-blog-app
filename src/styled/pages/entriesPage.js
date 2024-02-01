@@ -18,17 +18,6 @@ export const Actions = styled.div`
     gap: 10px;
 `;
 
-export const EntriesList = styled.ul`
-    width: 100%;
-    max-height: 70vh;
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 0;
-`;
-
 export const FormSearch = styled.form`
     width: 100%;
     display: flex;
