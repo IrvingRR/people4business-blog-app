@@ -1,24 +1,26 @@
 import { BiArrowBack } from "react-icons/bi";
 import { Button } from "../components/common/Button";
 import { Actions, EntryBody, EntryContainer, EntryHeader, EntryInfo, HeaderActions } from "../styled/pages/entryDetailsPage";
-import { EditEntryModal } from "../components/modals/EditEntryModal";
+import { EditEntryModal, ConfirmModal } from "../components/modals";
 import { useModal } from '../hooks';
 
 export const EntryDetailsPage = () => {
 
-    const { isOpen, openModal, closeModal } = useModal();
+    const editModal = useModal();
+    const confirmModal = useModal();
 
   return (
     <>
-    <EditEntryModal isOpen={isOpen} closeModal={closeModal}/>
+    <EditEntryModal isOpen={editModal.isOpen} closeModal={editModal.closeModal}/>
+    <ConfirmModal isOpen={confirmModal.isOpen} closeModal={confirmModal.closeModal}/>
     <EntryContainer>
         <HeaderActions>
             <Actions>
                 <Button label='Back' icon={<BiArrowBack/>}/>
             </Actions>
             <Actions>
-                <Button label='Edit' onClick={openModal}/>
-                <Button label='Delete' variant='outlined'/>
+                <Button label='Edit' onClick={editModal.openModal}/>
+                <Button label='Delete' variant='outlined' onClick={confirmModal.openModal}/>
             </Actions>
         </HeaderActions>
 
