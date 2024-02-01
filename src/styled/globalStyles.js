@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         --secondary-color-disabled: #b6fcd8;
 
         --error-color: #f83b3b;
+        --warning-color: #f8ff89;
         --white-color: #fff;
 
         --font-family: 'Inter', sans-serif;

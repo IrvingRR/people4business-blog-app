@@ -1,3 +1,4 @@
+export * from './ConnectionAlert';
 export * from './EntriesList';
 export * from './EntryRow';
 export * from './Header';

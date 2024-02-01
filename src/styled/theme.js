@@ -5,6 +5,7 @@ export const lightTeheme = {
     fontSecondaryColor: '#6d6d6d',
     borderColor: '#cccc',
     placeholderColor: '#cccc',
+    backgroundAlertConnection: '#f8ff89'
 };
 
 export const darkTheme = {
@@ -13,5 +14,6 @@ export const darkTheme = {
     fontColor: '#ffff',
     fontSecondaryColor: '#77768a',
     borderColor: '#5c5f74',
-    placeholderColor: '#5c5f74'
+    placeholderColor: '#5c5f74',
+    backgroundAlertConnection: '#fcff4d'
 };
