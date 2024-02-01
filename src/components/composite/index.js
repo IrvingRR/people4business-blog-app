@@ -1,2 +1,2 @@
-export * from './EntryCard';
+export * from './EntryRow';
 export * from './Header';

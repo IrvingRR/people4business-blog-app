@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EntryCardElement = styled.div`
+export const EntryRowElement = styled.li`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,14 +14,6 @@ export const EntryCardElement = styled.div`
     &:hover {
         transform: translateY(-5px);
         border-color: var(--primary-color);
-    }
-
-    @media screen and (min-width: 768px) {
-        max-width: 350px;
-    }
-
-    @media screen and (min-width: 992px) {
-        max-width: 300px;
     }
 
     h2 {

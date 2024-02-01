@@ -13,18 +13,11 @@ export const Actions = styled.div`
     align-items: center;
 `;
 
-export const EntriesGallery = styled.div`
+export const EntriesList = styled.ul`
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 20px;
     padding: 20px 0;
-
-    @media screen and (min-width: 768px) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
 `;

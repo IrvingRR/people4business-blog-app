@@ -1,8 +1,8 @@
-import { EntryCardElement, EntryBody, EntryHeader } from "../../styled/components/composite/entryCard";
+import { EntryRowElement, EntryBody, EntryHeader } from "../../styled/components/composite/entryCard";
 
-export const EntryCard = () => {
+export const EntryRow = () => {
   return (
-    <EntryCardElement>
+    <EntryRowElement>
         <EntryHeader>
             <p className="entry-author">Austin Powers</p>
             <span>|</span>
@@ -12,6 +12,6 @@ export const EntryCard = () => {
         <EntryBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aliquid officia inventore est iusto delectus, perferendis ipsam ratione error facilis aliquam sed fuga expedita libero neque consectetur numquam, dolorum eveniet?
         </EntryBody>
-    </EntryCardElement>
+    </EntryRowElement>
   );
 };
