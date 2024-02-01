@@ -1,16 +1,18 @@
+import { getSeventyCharanters } from "../../helpers/getSeventyCharacters";
 import { EntryRowElement, EntryBody, EntryHeader } from "../../styled/components/composite/entryCard";
 
-export const EntryRow = () => {
+export const EntryRow = ({ data={} }) => {
+  const formattedPublicationDate = data.publication_date && new Date(data.publication_date).toLocaleDateString();
   return (
     <EntryRowElement>
         <EntryHeader>
-            <p className="entry-author">Austin Powers</p>
+            <p className="entry-author">{data.author}</p>
             <span>|</span>
-            <span className="entry-publication-date">2024-01-20</span>
+            <span className="entry-publication-date">{formattedPublicationDate}</span>
         </EntryHeader>
-        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+        <h2>{data.title}</h2>
         <EntryBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda aliquid officia inventore est iusto delectus, perferendis ipsam ratione error facilis aliquam sed fuga expedita libero neque consectetur numquam, dolorum eveniet?
+          {getSeventyCharanters(data.content)}
         </EntryBody>
     </EntryRowElement>
   );

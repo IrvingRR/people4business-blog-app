@@ -7,15 +7,24 @@ export const EntriesContext = createContext();
 export const EntriesProvider = ({children}) => {
     const [state, dispatch] = useReducer(entriesReducer, entriesInitialState);
 
-    const readEntries = () => {
+    const readEntries = (data) => {
         dispatch({
-            type: ACTIONS.READ_ENTRIES
+            type: ACTIONS.READ_ENTRIES,
+            payload: data
+        });
+    };
+
+    const setLoading = (value) => {
+        dispatch({
+            type: ACTIONS.SET_LOADING,
+            payload: value
         });
     }
 
     const entriesState = {
         ...state,
-        readEntries
+        readEntries,
+        setLoading
     };
 
     return (
