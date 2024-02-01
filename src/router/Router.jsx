@@ -8,7 +8,7 @@ export const Router = () => {
     <Routes>
         <Route path={pathRoutes.entries} element={<RootLayout/>}>
             <Route index element={<EntriesPage/>}/>
-            <Route path={pathRoutes.entryDetails} element={<EntryDetailsPage/>}/>
+            <Route path={`${pathRoutes.entryDetails}/:id`} element={<EntryDetailsPage/>}/>
         </Route>
         <Route path="*" element={<h2>Error 404 - Page not found</h2>}/>
     </Routes>

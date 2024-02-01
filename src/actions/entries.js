@@ -1,5 +1,6 @@
 export const ACTIONS = {
     READ_ENTRIES: '@entries/readEntries',
     SET_LOADING: '@entries/setLoading',
-    ADD_ENTRY: '@entries/addEntry'
+    ADD_ENTRY: '@entries/addEntry',
+    SET_ENTRY: '@entries/setEntry'
 };

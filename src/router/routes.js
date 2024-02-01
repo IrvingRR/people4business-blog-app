@@ -1,4 +1,5 @@
 export const pathRoutes = {
     entries: '/',
-    entryDetails: '/entry/:id'
+    entryDetails: '/entry',
+    notFound: '/not-found'
 };

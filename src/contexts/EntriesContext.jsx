@@ -28,10 +28,18 @@ export const EntriesProvider = ({children}) => {
         });
     };
 
+    const setEntry = (entry) => {
+        dispatch({
+            type: ACTIONS.SET_ENTRY,
+            payload: entry
+        });
+    };
+
     const entriesState = {
         ...state,
         readEntries,
         addEntry,
+        setEntry,
         setLoading
     };
 

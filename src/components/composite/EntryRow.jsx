@@ -1,10 +1,11 @@
 import { getSeventyCharanters } from "../../helpers/getSeventyCharacters";
-import { EntryRowElement, EntryBody, EntryHeader } from "../../styled/components/composite/entryCard";
+import { pathRoutes } from "../../router/routes";
+import { EntryRowElement, EntryBody, EntryHeader } from "../../styled/components/composite/entryRow";
 
 export const EntryRow = ({ data={} }) => {
   const formattedPublicationDate = data.publication_date && new Date(data.publication_date).toLocaleDateString();
   return (
-    <EntryRowElement>
+    <EntryRowElement to={`${pathRoutes.entryDetails}/${data.id}`}>
         <EntryHeader>
             <p className="entry-author">{data.author}</p>
             <span>|</span>

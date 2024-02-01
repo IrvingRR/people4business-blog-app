@@ -34,8 +34,11 @@ export const CreateEntryModal = ({ isOpen, closeModal }) => {
       }
 
     } catch (error) {
-      console.log('Error creating entry:', error);
-
+      if(error.errors.length > 0) {
+        error.errors.forEach(error => toast.error(error))
+      } else {
+        toast.error(error.message);
+      }
     } finally {
       setIsLoading(false);
     }

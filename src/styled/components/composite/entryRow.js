@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const EntryRowElement = styled.li`
+export const EntryRowElement = styled(Link)`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -10,6 +11,7 @@ export const EntryRowElement = styled.li`
     border-radius: var(--radius);
     cursor: pointer;
     transition: var(--transition);
+    color: ${props => props.theme.fontColor};
 
     &:hover {
         transform: translateY(-5px);

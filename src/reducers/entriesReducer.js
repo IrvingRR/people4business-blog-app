@@ -22,6 +22,13 @@ export const entriesReducer = (state, action) => {
                 entries: [...state.entries, action.payload]
             };
         };
+
+        case ACTIONS.SET_ENTRY: {
+            return {
+                ...state,
+                entry: action.payload
+            };
+        };
     
         default:
             return state;

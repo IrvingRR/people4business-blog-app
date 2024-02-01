@@ -17,13 +17,15 @@ export const EntriesPage = () => {
         setLoading(true);
         const entries = await getEntriesService();
   
-        if(entries.status) {
-          readEntries(entries.data);
-          localStorage.setItem('entries', JSON.stringify(entries.data));
-        };
+        readEntries(entries.data);
+        localStorage.setItem('entries', JSON.stringify(entries.data));
 
       } catch (error) {
-        console.log('Error getting entries:', error);
+        if(error.errors.length > 0) {
+          error.errors.forEach(error => toast.error(error))
+        } else {
+          toast.error(error.message);
+        }
       
       } finally {
         setLoading(false);
