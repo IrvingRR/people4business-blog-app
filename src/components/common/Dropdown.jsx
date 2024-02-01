@@ -2,7 +2,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { DropdrownContainer, Legend, Option, Options } from "../../styled/components/common/dropdown";
 import { useRef, useState } from "react";
 
-export const Dropdown = ({ label, options=[] }) => {
+export const Dropdown = ({ label, options=[], maxWidth, ...props }) => {
 
     const [visibleOptions, setVisibleOptions] = useState(false);
     const [selectedOption, setSelectedOption] = useState({});
@@ -20,7 +20,7 @@ export const Dropdown = ({ label, options=[] }) => {
     };
 
     return (
-        <DropdrownContainer ref={dropdownRef} onClick={() => setVisibleOptions(!visibleOptions)}>
+        <DropdrownContainer { ...props } ref={dropdownRef} onClick={() => setVisibleOptions(!visibleOptions)} max_widt={maxWidth}>
             { selectedOption.label ? selectedOption.label : label}
             <BiChevronDown />
             <Options ref={listRef} visible={visibleOptions}>
