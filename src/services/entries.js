@@ -68,8 +68,22 @@ export const editEntryService = async (id, data) => {
         } else {
             return Promise.reject(response);
         }
-        console.log('Request:', request);
+    } catch (error) {
+        console.log('Error Service:', error);
+    }
+};
+
+export const deleteEntryService = async (id) => {
+    try {
+        const request = await fetch(`${API_URL}/entries/${id}`, { method: 'DELETE' });
+
+        const response = await request.json();
         
+        if(request.ok && request.status === 200) {
+            return Promise.resolve(response);
+        } else {
+            return Promise.reject(response);
+        }
     } catch (error) {
         console.log('Error Service:', error);
     }

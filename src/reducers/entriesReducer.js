@@ -8,6 +8,7 @@ export const entriesInitialState = {
 
 export const entriesReducer = (state, action) => {
     switch (action.type) {
+
         case ACTIONS.READ_ENTRIES: {
             return { ...state, entries: action.payload }
         };
@@ -27,6 +28,29 @@ export const entriesReducer = (state, action) => {
             return {
                 ...state,
                 entry: action.payload
+            };
+        };
+
+        case ACTIONS.UPDATE_ENTRY: {
+            const entriesUpdated = state.entries.map(entry => {
+                if(entry.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return entry;
+                }
+            });
+
+            return {
+                ...state,
+                entries: entriesUpdated
+            };
+        };
+
+        case ACTIONS.REMOVE_ENTRY: {
+            const entriesAfterRemoved = state.entries.filter(entry => entry.id !== action.payload);
+            return {
+                ...state,
+                entries: entriesAfterRemoved
             };
         };
     

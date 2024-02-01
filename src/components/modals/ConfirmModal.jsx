@@ -2,7 +2,7 @@ import { ConfirmModalActions, ConfirmModalCard, ConfirmModalContent } from "../.
 import { Button } from "../common/Button";
 import { Modal } from "./Modal";
 
-export const ConfirmModal = ({ isOpen, closeModal }) => {
+export const ConfirmModal = ({ isOpen, closeModal, isLoading, confirmFunction }) => {
   return (
     <Modal isOpenModal={isOpen} closeModal={closeModal}>
        <ConfirmModalCard>
@@ -12,7 +12,7 @@ export const ConfirmModal = ({ isOpen, closeModal }) => {
         </ConfirmModalContent>
         <ConfirmModalActions>
             <Button label='Cancel' variant='outlined' onClick={closeModal}/>
-            <Button label='Confirm'/>
+            <Button label='Confirm' onClick={confirmFunction} isLoading={isLoading} disabled={isLoading}/>
         </ConfirmModalActions>
        </ConfirmModalCard>
     </Modal>

@@ -5,14 +5,15 @@ import { Button, LinkButton } from "../components/common";
 import { Actions, EntryBody, EntryContainer, EntryHeader, EntryInfo, HeaderActions } from "../styled/pages/entryDetailsPage";
 import { EditEntryModal, ConfirmModal } from "../components/modals";
 import { useModal } from '../hooks';
-import { getEntryService } from "../services/entries";
+import { deleteEntryService, getEntryService } from "../services/entries";
 import { pathRoutes } from "../router/routes";
 import { EntriesContext } from "../contexts/EntriesContext";
 import { Loader } from "../components/common";
+import toast from "react-hot-toast";
 
 export const EntryDetailsPage = () => {
 
-    const { entry, isLoading, setEntry, setLoading } = useContext(EntriesContext);
+    const { entry, isLoading, setEntry, setLoading, removeEntry } = useContext(EntriesContext);
 
     const editModal = useModal();
     const confirmModal = useModal();
@@ -36,13 +37,28 @@ export const EntryDetailsPage = () => {
         getEntry();
     }, []);
 
+    const deleteEntry = async () => {
+        try {
+            await deleteEntryService(id);
+            toast.success('Entry deleted successfully!');
+            removeEntry(id);
+            navigate(pathRoutes.entries);
+        } catch (error) {
+            if(error.errors.length > 0) {
+                error.errors.forEach(error => toast.error(error))
+            } else {
+                toast.error(error.message);
+            }
+        }
+    };
+
   return (
     <>
     {isLoading && <Loader/>}
     {!isLoading && (
         <>
             <EditEntryModal isOpen={editModal.isOpen} closeModal={editModal.closeModal}/>
-            <ConfirmModal isOpen={confirmModal.isOpen} closeModal={confirmModal.closeModal}/>
+            <ConfirmModal isOpen={confirmModal.isOpen} closeModal={confirmModal.closeModal} confirmFunction={deleteEntry}/>
             <EntryContainer>
                 <HeaderActions>
                     <Actions>

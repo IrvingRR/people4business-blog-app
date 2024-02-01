@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -9,12 +9,15 @@ import { EntriesContext } from '../../contexts/EntriesContext';
 import { editEntryService } from "../../services/entries";
 
 export const EditEntryModal = ({ isOpen, closeModal }) => {
-  const { entry, setEntry } = useContext(EntriesContext);
+  const { entry, setEntry, updateEntry } = useContext(EntriesContext);
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data) => {
     try {
+      setIsLoading(true);
+
       const response = await editEntryService(id, data);
       toast.success('Entry updated successfully!');
       setEntry(response.data);
@@ -31,13 +34,17 @@ export const EditEntryModal = ({ isOpen, closeModal }) => {
 
       localStorage.setItem('entries', JSON.stringify(newEntriesStorage));
       
+      updateEntry(response.data);
       closeModal();
+
     } catch (error) {
-      if(error.errors.length > 0) {
+      if(error.errors && error.errors.length > 0) {
         error.errors.forEach(error => toast.error(error))
-    } else {
-        toast.error(error.message);
-    }
+      } else {
+          toast.error(error.message);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -76,7 +83,7 @@ export const EditEntryModal = ({ isOpen, closeModal }) => {
 
             <Actions>
                 <Button label='Cancel' variant='outlined' type='button' onClick={closeModal}/>
-                <Button label='Edit'/>
+                <Button label='Edit' isLoading={isLoading} disabled={isLoading}/>
             </Actions>
         </Form>
     </Modal>
