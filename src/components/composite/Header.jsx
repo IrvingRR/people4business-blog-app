@@ -6,7 +6,7 @@ import { pathRoutes } from "../../router/routes";
 export const Header = () => {
   return (
     <HeaderElement>
-        <Logo to={pathRoutes.home}>
+        <Logo to={pathRoutes.entries}>
             <BiNetworkChart/>
             Blog
         </Logo>

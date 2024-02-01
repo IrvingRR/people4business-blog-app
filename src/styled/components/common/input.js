@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 
 export const InputGroup = styled.div`
     width: 100%;
+    max-width: ${props => props.max_width};
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -9,7 +10,7 @@ export const InputGroup = styled.div`
 
 export const InputContent = styled.div`
     width: 100%;
-    height: 40px;
+    height: 35px;
     display: flex;
     align-items: center;
     position: relative;
@@ -53,6 +54,8 @@ export const InputElement = styled.input`
             color: var(--error-color) !important;
         }
     `}
+
+    ${props => props.rounded && css`border-radius: var(--radius-rounded)`}
 `;
 
 export const Legend = styled.div`

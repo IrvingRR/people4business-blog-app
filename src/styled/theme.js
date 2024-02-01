@@ -2,7 +2,7 @@ export const lightTeheme = {
     backgroundColor: '#ffffff',
     backgroundElementsColor: '#f3f3f3',
     fontColor: '#1c2727',
-    fontSecondaryColor: '#cccc',
+    fontSecondaryColor: '#6d6d6d',
     borderColor: '#cccc',
     placeholderColor: '#cccc',
 };

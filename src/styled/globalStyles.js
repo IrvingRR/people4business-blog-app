@@ -15,12 +15,12 @@ export const GlobalStyles = createGlobalStyle`
         --white-color: #fff;
 
         --font-family: 'Inter', sans-serif;
-        --fs-sm: 0.75rem; // 12px
-        --fs-md: 0.875rem; // 14px
-        --fs-lg: 1.25rem; // 20px
-        --fs-xl: 1.875rem; // 30px
-        --fs-xxl: 2.1875rem; // 35px
-        --fs-xxxl: 2.5rem; // 40px
+        --fs-sm: 10px; // 12px
+        --fs-md: 12px; // 14px
+        --fs-lg: 18px; // 20px
+        --fs-xl: 30px; // 30px
+        --fs-xxl: 35px; // 35px
+        --fs-xxxl: 40px; // 40px
 
         --radius: 5px;
         --radius-rounded: 80px;
