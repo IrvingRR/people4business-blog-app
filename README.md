@@ -19,7 +19,9 @@ This application was created with the purpose of managing the information of blo
 
 ## Usage
 
+The application is deployed so you can access using the next url
 
+    https://incandescent-peony-5b6f11.netlify.app/
 
 ## Installation
 If you need to install the server locally, these are the steps you can follow to do so.
